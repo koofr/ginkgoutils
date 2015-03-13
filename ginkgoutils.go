@@ -60,3 +60,7 @@ func (sc *SuiteConfig) Fail(msg string, callerSkip ...int) {
 	sc.suiteFailed = true
 	ginkgo.Fail(msg, callerSkip...)
 }
+
+func (sc *SuiteConfig) Failed() bool {
+	return sc.suiteFailed
+}
