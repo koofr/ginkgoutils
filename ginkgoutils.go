@@ -50,7 +50,7 @@ func (sc *SuiteConfig) newTest() (dir string, num int) {
 	sc.testNumLock.Lock()
 	defer sc.testNumLock.Unlock()
 	num = sc.testNum
-	dir = filepath.Join(sc.testRoot, fmt.Sprintf("test%d", num))
+	dir = filepath.Join(sc.testRoot, fmt.Sprintf("test_%03d", num))
 	os.Mkdir(dir, os.ModeDir|os.ModePerm)
 	sc.testNum++
 	return
