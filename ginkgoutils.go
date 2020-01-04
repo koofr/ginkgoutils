@@ -29,6 +29,9 @@ func NewSuiteConfig(name string) *SuiteConfig {
 }
 
 func (sc *SuiteConfig) SetupSuite() {
+
+
+
 	tmpDir := filepath.Join(os.TempDir(), filepath.FromSlash(filepath.Dir(sc.name)))
 	err := os.MkdirAll(tmpDir, os.ModePerm|os.ModePerm)
 	gomega.Expect(err).NotTo(gomega.HaveOccurred())
@@ -59,6 +62,10 @@ func (sc *SuiteConfig) newTest() (dir string, num int) {
 func (sc *SuiteConfig) Fail(msg string, callerSkip ...int) {
 	sc.suiteFailed = true
 	ginkgo.Fail(msg, callerSkip...)
+}
+
+func (sc *SuiteConfig) TestRoot() string {
+	return sc.testRoot
 }
 
 func (sc *SuiteConfig) Failed() bool {
